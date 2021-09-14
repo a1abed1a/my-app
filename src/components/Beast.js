@@ -1,10 +1,11 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from 'react-bootstrap/Card'
+import { Card, Button, Modal } from 'react-bootstrap'
 
 class Beast extends React.Component {
 
     constructor(props) {
+
         super(props);
         this.state = {
             votes: 0
@@ -18,19 +19,24 @@ class Beast extends React.Component {
     }
 
     render() {
+
         return (
-            <div style={{ width: '50%', float: 'left'}}>
-                <Card style={{ width: '18rem', minHeight: '600px', margin: '10px auto'}}>
-                    <Card.Img variant="top" src={this.props.image_url} alt={this.props.keyword} onClick={this.addVote}/>
+            <div style={{ width: '25%', float: 'left' }}>
+                <Card style={{ width: '16rem', minHeight: '575px', margin: '10px auto', border: 'black solid' }}>
+                    <Card.Img variant="top" src={this.props.image_url} alt={this.props.keyword} onClick={this.addVote} style={{ cursor: 'pointer' }} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
                             ❤{this.state.votes}
-                            <hr></hr>{this.props.description}
+                            <Button variant="primary" onClick={() => {
+                                this.props.showModal(this.props.title, this.props.image_url, this.props.description, this.props.keyword, this.state.votes)
+                            }} style={{ marginLeft: '10px' }}>
+                                Show Modal
+                            </Button>
+                            <hr />{this.props.description}
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                
             </div>
         )
     }
