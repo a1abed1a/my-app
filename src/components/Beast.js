@@ -21,12 +21,13 @@ class Beast extends React.Component {
     render() {
 
         return (
-            <div style={{ width: '25%', float: 'left' }}>
-                <Card style={{ width: '16rem', minHeight: '575px', margin: '10px auto', border: 'black solid' }}>
+            <div style={{ width: '25%', float: 'left', margin: 'auto'}}>
+                <Card style={{ width: '16rem', minHeight: '616px', margin: '10px auto', border: 'black solid' }}>
                     <Card.Img variant="top" src={this.props.image_url} alt={this.props.keyword} onClick={this.addVote} style={{ cursor: 'pointer' }} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
+                            <p>Horns {this.props.horns}</p>
                             ❤{this.state.votes}
                             <Button variant="primary" onClick={() => {
                                 this.props.showModal(this.props.title, this.props.image_url, this.props.description, this.props.keyword, this.state.votes)
